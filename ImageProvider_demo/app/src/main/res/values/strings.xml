@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ImageProvider_demo</string>
+    <string name="test">获取图片</string>
 </resources>
