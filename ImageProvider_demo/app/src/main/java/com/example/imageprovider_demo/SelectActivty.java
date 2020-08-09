@@ -29,6 +29,9 @@ public class SelectActivty extends AppCompatActivity {
     }
 
     private void initLoaderManager() {
+        /**
+         * LoadManager是一个加载器，用来进行一些耗时的加载操作，但是在api 28的时候已经废弃，采用ViewModels和LiveData来组合加载数据，所以后期更改一下
+         */
         LoaderManager loadermanager = LoaderManager.getInstance(this);
         loadermanager.initLoader(LOADER_ID, null, new LoaderManager.LoaderCallbacks<Cursor>() {
             @NonNull
@@ -43,7 +46,13 @@ public class SelectActivty extends AppCompatActivity {
 
             @Override
             public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor data) {
+                /**
+                 * cursor.moveToNext是移动cursor，让它指向下一行
+                 * cursor.getColumnIndex 会返回指定列的名字
+                 *
+                 * */
                 if (data != null) {
+                    //cursor.getColumnNames 返回一个字符串数组的列名
                     String[] columnNames = data.getColumnNames();
                     while(data.moveToNext()){
                         Log.d(TAG,"==============================");

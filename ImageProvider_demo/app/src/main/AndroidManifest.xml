@@ -17,6 +17,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".SelectActivty"/>
+    <provider
+        android:authorities="."
+        android:name=""
     </application>
 
 </manifest>
