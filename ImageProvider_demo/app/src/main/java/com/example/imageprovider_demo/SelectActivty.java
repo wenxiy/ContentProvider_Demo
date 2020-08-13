@@ -1,12 +1,15 @@
 package com.example.imageprovider_demo;
 
+import android.Manifest;
 import android.content.ContentResolver;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -23,6 +26,7 @@ public class SelectActivty extends AppCompatActivity {
     public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
         super.onCreate(savedInstanceState, persistentState);
         setContentView(R.layout.activity_select);
+        init();
         ContentResolver contentResolver = getContentResolver();
         Uri imageuri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
         Cursor cursor = contentResolver.query(imageuri, null, null, null, null);
@@ -36,6 +40,27 @@ public class SelectActivty extends AppCompatActivity {
         }
 
         //        initLoaderManager();
+    }
+
+    private void init() {
+                CheckPermission();//Android 6.0以上检查
+            }
+
+    private void CheckPermission() {
+        //checkSelfPermission方法返回一个静态的Permission_Granted（允许）或者Permission_denied（拒绝）
+        int readExStoragePermissonRest = checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE);
+        //许可授权的结果返回给readExStoragePermissonRest
+        /**
+         * 如果访问的结果是拒绝，那么就请求这个权限
+         */
+        if (readExStoragePermissonRest != PackageManager.PERMISSION_GRANTED) {
+            /**
+             * READ_EXTERNAL_STORAGE是外部的存储
+             */
+            requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, PERMISION_REQUEST_CODE);
+        }
+
+
     }
 
     private void initLoaderManager() {
