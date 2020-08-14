@@ -5,6 +5,7 @@ import android.content.ContentResolver;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.provider.MediaStore;
@@ -13,14 +14,16 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.loader.app.LoaderManager;
 import androidx.loader.content.CursorLoader;
 import androidx.loader.content.Loader;
-
+@RequiresApi(api = Build.VERSION_CODES.M)
 public class SelectActivty extends AppCompatActivity {
     private static final String TAG = ".SelectActivity";
     public static final int LOADER_ID = 1;
+    private static final int PERMISION_REQUEST_CODE = 1;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
@@ -84,7 +87,7 @@ public class SelectActivty extends AppCompatActivity {
                 /**
                  * cursor.moveToNext是移动cursor，让它指向下一行
                  * cursor.getColumnIndex 会返回指定列的名字
-                 *
+                 * String[] projection = {MediaStore.Images.ImageColumns.DATA, MediaStore.Images.ImageColumn
                  * */
                 if (cursor != null) {
                     //cursor.getColumnNames 返回一个字符串数组的列名

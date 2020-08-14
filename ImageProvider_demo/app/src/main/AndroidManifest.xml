@@ -17,6 +17,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".SelectActivty"/>
+        <provider
+            android:authorities="com.example.imageprovider_demo.ImageContentprovider"
+            android:name=".ImageContentprovider"/>
     </application>
 
 </manifest>
