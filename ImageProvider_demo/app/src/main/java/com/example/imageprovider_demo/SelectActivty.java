@@ -19,9 +19,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.loader.app.LoaderManager;
 import androidx.loader.content.CursorLoader;
 import androidx.loader.content.Loader;
+
+import java.util.ArrayList;
+
 @RequiresApi(api = Build.VERSION_CODES.M)
 public class SelectActivty extends AppCompatActivity {
     private static final String TAG = ".SelectActivity";
+    private ArrayList<ImageModel> allImages;
     public static final int LOADER_ID = 1;
     private static final int PERMISION_REQUEST_CODE = 1;
 
@@ -35,9 +39,9 @@ public class SelectActivty extends AppCompatActivity {
         Cursor cursor = contentResolver.query(imageuri, null, null, null, null);
         String[] columnNames = cursor.getColumnNames();
         while (cursor.moveToNext()) {
-            Log.d(TAG, "==========================");
+            Log.d(TAG, "===================         =======");
             for (String columnName : columnNames) {
-                Log.d(TAG, columnName+"======"+cursor.getString(cursor.getColumnIndex(columnName)));
+                Log.d(TAG, columnName + "======" + cursor.getString(cursor.getColumnIndex(columnName)));
 
             }
         }
@@ -46,8 +50,8 @@ public class SelectActivty extends AppCompatActivity {
     }
 
     private void init() {
-                CheckPermission();//Android 6.0以上检查
-            }
+        CheckPermission();//Android 6.0以上检查
+    }
 
     private void CheckPermission() {
         //checkSelfPermission方法返回一个静态的Permission_Granted（允许）或者Permission_denied（拒绝）
