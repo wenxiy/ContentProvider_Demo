@@ -35,7 +35,7 @@ public class SelectActivty extends AppCompatActivity {
         setContentView(R.layout.activity_select);
         init();
         ContentResolver contentResolver = getContentResolver();
-        Uri imageuri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
+        Uri imageuri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI; //对媒体库进行读取的选项
         Cursor cursor = contentResolver.query(imageuri, null, null, null, null);
         String[] columnNames = cursor.getColumnNames();
         while (cursor.moveToNext()) {

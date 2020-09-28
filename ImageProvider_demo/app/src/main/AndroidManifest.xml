@@ -18,6 +18,7 @@
         </activity>
         <activity android:name=".SelectActivty"/>
         <provider
+            android:permission="com.ryg.PROVIDER"
             android:authorities="com.example.imageprovider_demo.ImageContentprovider"
             android:name=".ImageContentprovider"/>
     </application>
