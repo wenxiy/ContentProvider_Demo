@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.imageprovider_demo">
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -22,5 +23,4 @@
             android:authorities="com.example.imageprovider_demo.ImageContentprovider"
             android:name=".ImageContentprovider"/>
     </application>
-
 </manifest>

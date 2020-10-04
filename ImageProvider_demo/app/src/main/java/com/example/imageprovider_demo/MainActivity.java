@@ -5,10 +5,14 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
+import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -68,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 //以下是申请成功的方法
                 ImageSelect();
+                Log.d(TAG,"response is success");
             } else {
                 isshouldShowRequest = shouldShowRequestPermissionRationale(Manifest.permission.READ_EXTERNAL_STORAGE);
                 if (isshouldShowRequest){
@@ -80,7 +85,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void ImageSelect() {
-        Intent intent = new Intent(this, SelectActivty.class);
+        Intent intent = new Intent();
+        intent.setClass(getApplicationContext(),SelectActivty.class);
         startActivity(intent);
     }
 }
