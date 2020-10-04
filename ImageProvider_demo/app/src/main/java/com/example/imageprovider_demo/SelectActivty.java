@@ -2,6 +2,7 @@ package com.example.imageprovider_demo;
 
 import android.Manifest;
 import android.content.ContentResolver;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
@@ -25,6 +26,7 @@ import java.util.ArrayList;
 @RequiresApi(api = Build.VERSION_CODES.M)
 public class SelectActivty extends AppCompatActivity {
     private static final String TAG = ".SelectActivity";
+    private static final int CHOOSE_PHOTO = 2;
     private ArrayList<ImageModel> allImages;
     public static final int LOADER_ID = 1;
     private static final int PERMISION_REQUEST_CODE = 1;
@@ -39,6 +41,9 @@ public class SelectActivty extends AppCompatActivity {
     }
 
     private void init() {
+        Intent intent = new Intent("android.intent.action.GET_CONTENT");
+        intent.setType("image/*");
+        startActivityForResult(intent, CHOOSE_PHOTO);
        initLoaderManager();
     }
 
