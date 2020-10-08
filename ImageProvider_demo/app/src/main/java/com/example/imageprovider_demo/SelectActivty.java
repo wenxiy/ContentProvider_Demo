@@ -86,7 +86,7 @@ public class SelectActivty extends AppCompatActivity {
 
             @Override
             public void onLoaderReset(@NonNull Loader<Cursor> loader) {
-
+                //重置
             }
         });
 
